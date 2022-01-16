@@ -16,13 +16,15 @@ namespace Game
         }
 
         
-        public void Update()
+        protected override void Update()
         {
             if (player.State != PlayerState.Moving)
             {
                 rb.angularVelocity = Vector3.zero;
                 return;
             }
+            
+            base.Update();
 
             if (canMoveForwards)
             {

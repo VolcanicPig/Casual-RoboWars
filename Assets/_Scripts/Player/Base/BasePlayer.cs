@@ -27,7 +27,7 @@ namespace Game
             }
         }
         
-        protected PlayerSlideMovement movement;
+        protected BasePlayerMovement movement;
 
         protected virtual void OnEnable()
         {
@@ -41,7 +41,7 @@ namespace Game
         
         protected virtual void Awake()
         {
-            movement = GetComponent<PlayerSlideMovement>();
+            movement = GetComponent<BasePlayerMovement>();
         }
         
         protected virtual void OnGameStateChanged(GameState state)
