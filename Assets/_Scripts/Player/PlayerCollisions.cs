@@ -29,10 +29,10 @@ namespace Game
 
             if (other.CompareTag(_kCollectable))
             {
-                Collectable collectable = other.GetComponent<Collectable>(); 
-                
-                if(collectable)
-                    collectable.Collect();
+                Collectable collectable = other.GetComponent<Collectable>();
+
+                if (collectable)
+                    collectable.Collect(_player.gameObject); 
             }
         }
     }
