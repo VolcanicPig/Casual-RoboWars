@@ -17,18 +17,18 @@ namespace Game
 
         public void EquipWeapon(Weapon weapon)
         {
+            Weapon newWeapon = Instantiate(weapon, slotMap[weapon.Slot].transform);
+            newWeapon.transform.localPosition = Vector3.zero; 
+            
             if (currentAttachments.ContainsKey(weapon.Slot))
             {
                 Destroy(currentAttachments[weapon.Slot].gameObject);
-                currentAttachments[weapon.Slot] = weapon; 
+                currentAttachments[weapon.Slot] = newWeapon; 
             }
             else
             {
-                currentAttachments.Add(weapon.Slot, weapon);
+                currentAttachments.Add(weapon.Slot, newWeapon);
             }
-
-            Weapon newWeapon = Instantiate(weapon, slotMap[weapon.Slot].transform);
-            newWeapon.transform.localPosition = Vector3.zero; 
         }
     }
 }
