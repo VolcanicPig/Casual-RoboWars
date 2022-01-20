@@ -265,6 +265,8 @@ MonoBehaviour:
   groundedLayer:
     serializedVersion: 2
     m_Bits: 1
+  rotateSpeed: 5
+  maxAngleToMove: 45
 --- !u!114 &6675593442543429081
 MonoBehaviour:
   m_ObjectHideFlags: 0

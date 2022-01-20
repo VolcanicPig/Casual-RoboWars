@@ -7,6 +7,9 @@ namespace Game
 {
     public class PlayerJoystickMovement : BasePlayerMovement
     {
+        [SerializeField] private float rotateSpeed;
+        [SerializeField] private float maxAngleToMove;
+        
         private Joystick _joystick;
 
         protected override void Awake()
@@ -44,18 +47,31 @@ namespace Game
             camRight.y = 0;
             camForward = camForward.normalized;
             camRight = camRight.normalized;
-			
-            transform.position += (camForward * move.z + camRight * move.x) * forwardsSpeed * Time.deltaTime;
-			
+
+            Vector3 camRelativeDir = (camForward * move.z + camRight * move.x); 
+            
             if (move != Vector3.zero)
             {
                 IsMoving = true;
-                transform.forward = (camForward * move.z + camRight * move.x);
+                HandleRotation(camRelativeDir);
             }
             else
             {
                 IsMoving = false; 
             }
+
+            float angleToDirection = Vector3.Angle(transform.forward, camRelativeDir); 
+            
+            if(angleToDirection <= maxAngleToMove)
+                transform.position += camRelativeDir * forwardsSpeed * Time.deltaTime;
+        }
+
+        private void HandleRotation(Vector3 targetDir)
+        {
+            float step = rotateSpeed * Time.deltaTime;
+            Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
+            Debug.DrawRay(transform.position, newDir, Color.red);
+            transform.rotation = Quaternion.LookRotation(newDir); 
         }
     }
 }
