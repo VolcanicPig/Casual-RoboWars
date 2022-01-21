@@ -668,7 +668,7 @@ MonoBehaviour:
   TestLOSTargetsOnly: 0
   NumberOfRays: 1
   MinimumVisibility: 0.5
-  SensorRange: 3
+  SensorRange: 5
   DetectsOnLayers:
     serializedVersion: 2
     m_Bits: 128
