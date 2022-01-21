@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1382324138879914711}
   - component: {fileID: 4825949700521392920}
   m_Layer: 0
-  m_Name: Weapon_Top
+  m_Name: Weapon_Top_Turret
   m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
