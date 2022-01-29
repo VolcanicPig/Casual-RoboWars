@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VolcanicPig.Mobile;
 
 namespace Game
 {
@@ -15,7 +16,7 @@ namespace Game
         [Header("Shooting")]
         [SerializeField] private Transform projectileSpawnPoint;
         [SerializeField] private float shootCooldown;
-        [SerializeField] private Projectile projectile;
+        [SerializeField] private string projectileKey;
         
         
         private GameObject _currentTarget; 
@@ -42,7 +43,10 @@ namespace Game
         {
             if (Time.time > _lastShotTime + shootCooldown)
             {
-                Projectile p = Instantiate(projectile, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
+                string parentLayerName = LayerMask.LayerToName(transform.parent.gameObject.layer); 
+                ObjectPool.Instance.SpawnFromPool(
+                    projectileKey, null, projectileSpawnPoint.position, projectileSpawnPoint.rotation, parentLayerName);
+                
                 _lastShotTime = Time.time; 
             }
         }

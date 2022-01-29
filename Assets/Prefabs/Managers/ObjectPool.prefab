@@ -48,3 +48,6 @@ MonoBehaviour:
   - key: CoinFeedback
     prefab: {fileID: 910711405588802761, guid: 26fe28d02c24749609a1c265f1456aff, type: 3}
     poolSize: 40
+  - key: Missile_Fire
+    prefab: {fileID: 1692925882083106, guid: d2e12f11e1f9a8f41a018e2f56fd9589, type: 3}
+    poolSize: 20

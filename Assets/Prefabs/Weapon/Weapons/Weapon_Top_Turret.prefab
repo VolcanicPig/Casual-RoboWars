@@ -80,7 +80,7 @@ MonoBehaviour:
   minAngleToShoot: 25
   projectileSpawnPoint: {fileID: 3382594709883594958}
   shootCooldown: 0.5
-  projectile: {fileID: 8683408882591785986, guid: d2e12f11e1f9a8f41a018e2f56fd9589, type: 3}
+  projectileKey: Missile_Fire
 --- !u!1001 &4260893027939699920
 PrefabInstance:
   m_ObjectHideFlags: 0
