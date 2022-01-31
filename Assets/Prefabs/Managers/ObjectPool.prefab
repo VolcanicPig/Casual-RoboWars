@@ -51,3 +51,6 @@ MonoBehaviour:
   - key: Missile_Fire
     prefab: {fileID: 1692925882083106, guid: d2e12f11e1f9a8f41a018e2f56fd9589, type: 3}
     poolSize: 20
+  - key: Explosion_Metal
+    prefab: {fileID: 1952076019714368, guid: d42852d7985301b42a647ff270d3d088, type: 3}
+    poolSize: 20

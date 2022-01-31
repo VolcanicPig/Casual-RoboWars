@@ -78,6 +78,7 @@ MonoBehaviour:
   turretTop: {fileID: 5550394554202762723}
   rotateSpeed: 10
   minAngleToShoot: 25
+  aimOffset: {x: 0, y: 0.5, z: 0}
   projectileSpawnPoint: {fileID: 3382594709883594958}
   shootCooldown: 0.5
   projectileKey: Missile_Fire
@@ -136,6 +137,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot_Top_CannonTurret
       objectReference: {fileID: 0}
+    - target: {fileID: 7202271454713460447, guid: 6b13e2b3670e7c1489d89a8177e671c6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 391d11fb65b61014eb313e127073582f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b13e2b3670e7c1489d89a8177e671c6, type: 3}
 --- !u!4 &4371591021217557307 stripped

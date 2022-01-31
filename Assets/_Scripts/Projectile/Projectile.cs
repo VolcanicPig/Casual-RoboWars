@@ -9,7 +9,8 @@ namespace Game
     public class Projectile : PooledObjectBase
     {
         [SerializeField] private float moveSpeed;
-        [SerializeField] private int damage; 
+        [SerializeField] private int damage;
+        [SerializeField] private string explosionEffectKey; 
         
         private void Update()
         {
@@ -22,6 +23,8 @@ namespace Game
             {
                 health.TakeHealth(damage); 
             }
+
+            ObjectPool.Instance.SpawnFromPool(explosionEffectKey, null, transform.position, transform.rotation); 
             
             Recycle();
         }

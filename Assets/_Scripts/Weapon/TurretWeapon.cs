@@ -12,6 +12,7 @@ namespace Game
         [SerializeField] private GameObject turretTop; 
         [SerializeField] private float rotateSpeed;
         [SerializeField] private float minAngleToShoot;
+        [SerializeField] private Vector3 aimOffset; 
 
         [Header("Shooting")]
         [SerializeField] private Transform projectileSpawnPoint;
@@ -53,10 +54,11 @@ namespace Game
 
         private void RotateToTarget()
         {
-            _currentTarget = rangeSensor.DetectedObjects[0]; 
+            _currentTarget = rangeSensor.DetectedObjects[0];
+            Vector3 targetPosition = _currentTarget.transform.position + aimOffset; 
             
             float step = rotateSpeed * Time.deltaTime;
-            _currentTargetDirection = _currentTarget.transform.position - turretTop.transform.position;
+            _currentTargetDirection = targetPosition - turretTop.transform.position;
             Vector3 newDirection = Vector3.RotateTowards(turretTop.transform.forward, _currentTargetDirection, step, 0.0f);
             turretTop.transform.rotation = Quaternion.LookRotation(newDirection); 
         }

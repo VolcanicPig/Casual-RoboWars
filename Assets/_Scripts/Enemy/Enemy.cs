@@ -7,31 +7,39 @@ namespace Game
 {
     public class Enemy : MonoBehaviour
     {
+        public Health Health { get; private set; }
+        
         [SerializeField] private GameObject deathParticle;
 
-        private Health _health;
+        private Section _section; 
 
         private void Awake()
         {
-            _health = GetComponent<Health>();
-            _health.Killed += OnDeath; 
+            Health = GetComponent<Health>();
+            Health.Killed += OnDeath; 
         }
 
         private void OnDisable()
         {
-            _health.Killed -= OnDeath; 
+            Health.Killed -= OnDeath; 
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.K))
             {
-                _health.TakeHealth(1);
+                Health.TakeHealth(1);
             }
+        }
+
+        public void Init(Section section)
+        {
+            _section = section; 
         }
 
         private void OnDeath()
         {
+            _section.OnEnemyKilled(this); 
             Instantiate(deathParticle, transform.position, Quaternion.identity); 
         }
     }
