@@ -10,8 +10,10 @@ namespace Game
     {
         public Health Health { get; private set; }
         public Section Section { get; private set; }
-        public RangeSensor RangeSensor => rangeSensor; 
-
+        public RangeSensor RangeSensor => rangeSensor;
+        public EnemyStats Stats => enemyStats; 
+        
+        [SerializeField] private EnemyStats enemyStats;
         [SerializeField] private RangeSensor rangeSensor; 
         [SerializeField] private GameObject deathParticle;
 
@@ -20,6 +22,8 @@ namespace Game
         {
             Health = GetComponent<Health>();
             Health.Killed += OnDeath;
+
+            rangeSensor.SensorRange = enemyStats.SightRange;
         }
 
         private void OnDisable()

@@ -28,7 +28,7 @@ namespace Game
 
             if (angleToDirection <= 45)
             {
-                float step = 3f * Time.deltaTime;
+                float step = enemy.Stats.ChaseSpeed * Time.deltaTime;
                 transform.position = Vector3.MoveTowards(currPos, _player.transform.position, step); 
             }
         }
@@ -37,7 +37,7 @@ namespace Game
         {
             Vector3 playerDir = _player.transform.position - transform.position; 
             
-            float step = 10f * Time.deltaTime;
+            float step = enemy.Stats.RotateSpeed * Time.deltaTime;
             Vector3 newDir = Vector3.RotateTowards(transform.forward, playerDir, step, 0.0f);
             Debug.DrawRay(transform.position, newDir, Color.red);
             transform.rotation = Quaternion.LookRotation(newDir); 

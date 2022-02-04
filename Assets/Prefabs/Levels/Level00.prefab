@@ -547,7 +547,7 @@ PrefabInstance:
     - target: {fileID: 5965072773609618802, guid: e0129d5ead1a05346a8d9782e5a4a271, type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 4825949700521392920, guid: 1e868d29659e3444fb8a0df55172b215, type: 3}
+      objectReference: {fileID: 3608103125394008217, guid: 1e868d29659e3444fb8a0df55172b215, type: 3}
     - target: {fileID: 8782076432642330522, guid: e0129d5ead1a05346a8d9782e5a4a271, type: 3}
       propertyPath: m_Name
       value: WeaponCollectable (1)
