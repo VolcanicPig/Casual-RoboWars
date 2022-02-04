@@ -1,22 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using SensorToolkit;
 using UnityEngine;
 
 namespace Game
 {
-    public class Enemy : MonoBehaviour
+    public class Enemy : EnemyStateMachine
     {
         public Health Health { get; private set; }
-        
+        public Section Section { get; private set; }
+        public RangeSensor RangeSensor => rangeSensor; 
+
+        [SerializeField] private RangeSensor rangeSensor; 
         [SerializeField] private GameObject deathParticle;
 
-        private Section _section; 
 
         private void Awake()
         {
             Health = GetComponent<Health>();
-            Health.Killed += OnDeath; 
+            Health.Killed += OnDeath;
         }
 
         private void OnDisable()
@@ -26,20 +29,18 @@ namespace Game
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                Health.TakeHealth(1);
-            }
+            state?.Update();
         }
 
         public void Init(Section section)
         {
-            _section = section; 
+            Section = section; 
+            SetState(new EnemyWanderState(this, transform));
         }
 
         private void OnDeath()
         {
-            _section.OnEnemyKilled(this); 
+            Section.OnEnemyKilled(this); 
             Instantiate(deathParticle, transform.position, Quaternion.identity); 
         }
     }

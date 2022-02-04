@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Game
 {
@@ -12,7 +13,8 @@ namespace Game
         [Header("Section Settings")] 
         [SerializeField] private int enemiesToSpawn;
 
-        [Header("References")]
+        [Header("References")] 
+        [SerializeField] private Transform[] enemyWaypoints; 
         [SerializeField] private Transform[] spawnPoints;
         [SerializeField] private Enemy enemyPrefab;
         [SerializeField] private GameObject blockade; 
@@ -50,6 +52,12 @@ namespace Game
                 blockade.SetActive(false); 
                 SectionCleared?.Invoke(); 
             }
+        }
+
+        public Transform GetRandomWaypoint()
+        {
+            int rand = Random.Range(0, enemyWaypoints.Length);
+            return enemyWaypoints[rand]; 
         }
     }
 }
