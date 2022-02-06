@@ -28,6 +28,9 @@ namespace Game
 
             if (angleToDirection <= 45)
             {
+                float distToTarget = Vector3.Distance(transform.position, _player.transform.position);
+                if (distToTarget <= enemy.Stats.MinDistanceToTarget) return; 
+                
                 float step = enemy.Stats.ChaseSpeed * Time.deltaTime;
                 transform.position = Vector3.MoveTowards(currPos, _player.transform.position, step); 
             }

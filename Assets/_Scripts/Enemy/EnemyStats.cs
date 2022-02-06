@@ -11,6 +11,7 @@ namespace Game
         [Header("Movement")] 
         public float WanderSpeed;
         public float ChaseSpeed;
-        public float RotateSpeed; 
+        public float RotateSpeed;
+        public float MinDistanceToTarget; 
     }
 }

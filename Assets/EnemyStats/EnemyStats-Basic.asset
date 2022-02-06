@@ -17,3 +17,4 @@ MonoBehaviour:
   WanderSpeed: 2
   ChaseSpeed: 4
   RotateSpeed: 10
+  MinDistanceToTarget: 2
